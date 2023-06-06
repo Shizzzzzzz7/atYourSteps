@@ -1,0 +1,20 @@
+{
+  "name": "ecommerce-project-bg",
+  "version": "1.0.0",
+  "description": "MERN Stack Ecommerce",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Shirsha",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.1.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22"
+  }
+}
