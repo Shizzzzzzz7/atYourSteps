@@ -1,4 +1,5 @@
 const User= require("../models/userModel");
+const jwt= require("jsonwebtoken");
 const {hashPassword, comparePassword}= require("../helpers/authHelper");
 
 const registerController=async(req,res)=>{
@@ -69,6 +70,11 @@ const loginController = async (req,res)=>{
             });
         }
 
+        //generating JWT Token
+        //For the payload dection of JWT.sign we require unique element for user
+        //So in general we use User ID 
+        const token= await jwt.sign({_id:userExist._id},process.env.JWT_SECRET_KEY,{expiresIn:"2d"});
+
         res.status(201).send({
             success:"true",
             messgae:"User LogIn Successful",
@@ -76,7 +82,8 @@ const loginController = async (req,res)=>{
                 name: userExist.name,
                 email: userExist.email,
                 phone: userExist.phone,
-                address: userExist.address 
+                address: userExist.address,
+                token:token
             }
         });
 
